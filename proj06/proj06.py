@@ -39,10 +39,13 @@ def choose_word(wordlist):
 
 # end of helper code
 # -----------------------------------
-
+count = 0
 # actually load the dictionary of words and point to it with 
 # the wordlist variable so that it can be accessed from anywhere
 # in the program
 wordlist = load_words()
 
-# your code begins here!
+# your code begins here!?.,mnbvcxzzxcvbnm,./
+print choose_word(wordlist)
+while count = 0
+

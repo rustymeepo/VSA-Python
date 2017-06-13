@@ -11,7 +11,13 @@ def divisors(num):
     :param num: int
     :return: list (int)
     """
-    return 0
+    ans_list = []
+    for n in range(1,num+1):
+        if num % n == 0:
+            ans_list.append(n)
+    print ans_list
+
+    return ans_list
 
 def prime(num):
     """
@@ -19,7 +25,12 @@ def prime(num):
     :param num: int
     :return: bool
     """
-    return False
+
+    divisorslist = divisors(num)
+    if len(divisorslist) == 2:
+        return True
+    else:
+        return False
 
 # Part II
 
@@ -30,6 +41,10 @@ def intersection(lst1, lst2):
     :param lst2: list, any type
     :return: list, any type
     """
+
+    set(lst1).intersection(lst2)
+
+
     return ["test"]
 
 # Part III
@@ -60,7 +75,8 @@ def square(side):
     :param side: int or float
     :return: int or float
     """
-    return 0
+
+    return square(side)
 
 def pythagorean(a,b,c):
     """
@@ -80,7 +96,8 @@ def is_right(side1, side2, side3):
     :param side3: int or float
     :return: bool
     """
-    return False
+
+
 
 # TESTS
 # Feel free to add your own tests as needed!
