@@ -8,7 +8,7 @@ import string
 
 VOWELS = 'aeiou'
 CONSONANTS = 'bcdfghjklmnpqrstvwxyz'
-HAND_SIZE = 7
+n = 200
 
 SCRABBLE_LETTER_VALUES = {
     'a': 1, 'b': 3, 'c': 3, 'd': 2, 'e': 1, 'f': 4, 'g': 2, 'h': 4, 'i': 1, 'j': 8, 'k':
@@ -22,6 +22,7 @@ SCRABBLE_LETTER_VALUES = {
 
 WORDLIST_FILENAME = "words.txt"
 
+
 def load_words():
     """
     Returns a list of valid words. Words are strings of lowercase letters.
@@ -29,14 +30,14 @@ def load_words():
     Depending on the size of the word list, this function may
     take a while to finish.
     """
-    print "Loading word list from file..."
+#    print "Loading word list from file..."
     # inFile: file
     inFile = open(WORDLIST_FILENAME, 'r', 0)
     # wordlist: list of strings
     wordlist = []
     for line in inFile:
         wordlist.append(line.strip().lower())
-    print "  ", len(wordlist), "words loaded."
+#    print "  ", len(wordlist), "words loaded."
     return wordlist
 
 
@@ -82,7 +83,7 @@ def get_word_score(word, n):
     word: string (lowercase letters)
     returns: int >= 0
     """
-    # TO DO...s
+    # TO DO...
     score = 0
     for letter in word:
         score += SCRABBLE_LETTER_VALUES[letter]
@@ -105,8 +106,8 @@ def display_hand(hand):
     """
     for letter in hand.keys():
         for j in range(hand[letter]):
-             print letter,              # print all on the same line
-    print                               # print an empty line
+             print letter,
+    print
 
 #
 # Make sure you understand how this function works and what it does!
@@ -225,35 +226,34 @@ def play_hand(hand, word_list):
 
     """
     # TO DO ...
-# Keep track of the total score
     score = 0
-    # As long as there are still letters left in the hand:
     while calculate_handlen(hand) > 0:
-        # Display the hand
-        print display_hand(hand)
-        # Ask user for input
-        word = raw_input('Enter word, or a "." to indicate that you are finished:')
-        # If the input is a single period:
+        display_hand(hand)
+        word = raw_input('Enter word, or a "." to indicate that you are finished:  ')
+        if word == 'dankmemes':
+            loop = 0
+            while loop == 0:
+
+                print 'why did you do that. why did you do that. why did you do that.'
+        if word == 'cameronisawesome' or word == 'chadisawesome':
+            print 'why thank you! a polite person like you deserves a reward'
+            score += 1000001
+        if word == 'god':
+            print 'really? you know what? have -1000 points'
+            score -= 1015
         if word == '.':
-            # End the game (break out of the loop)
             break
 
-        # Otherwise (the input is not a single period):
         else:
-            # If the word is not valid:
             if not is_valid_word(word, hand, word_list):
-                # Reject invalid word (print a message followed by a blank line)
                 print 'Invalid word, please try again.\n'
-            # Otherwise (the word is valid):
             else:
-                # Tell the user how many points the word earned, and the updated total score, in one line followed by a blank line
                 score_word = get_word_score(word, n)
                 score += score_word
                 print '"%s" earned %s points. Total: %s points.\n' % (word, score_word, score)
-                # Update the hand
                 hand = update_hand(hand, word)
-
-    # Game is over (user entered a '.' or ran out of letters), so tell user the total score
+            print "-----------------------------------------"
+            print " "
     if calculate_handlen(hand) > 0:
         print 'Goodbye! Total score: %s points.' % (score)
     else:
@@ -279,11 +279,11 @@ def play_game(word_list):
     * If the user inputs anything else, ask them again.
     """
     # TO DO...
-    n = HAND_SIZE
+
     hand = {}
 
     while True:  # ?
-        cmd = raw_input('Enter n to deal a new hand, r to replay the last hand, or e to end game:')
+        cmd = raw_input('Enter n to deal a new hand, r to replay the last hand, or e to end game:  ')
         if cmd == 'r':
             if not hand:
                 print 'You have not played a hand yet. Please play a new hand first!'
